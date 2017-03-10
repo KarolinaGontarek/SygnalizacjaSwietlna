@@ -1,0 +1,6 @@
+/*@!Encoding:1250*/
+
+//zmienia zmienn¹ PassSwitch na to co dostanie w Passage (sygna³ Pass)
+on message Passage{
+  sysSetVariableInt(sysvar::Passage::PassSwitch, this.Pass);
+}

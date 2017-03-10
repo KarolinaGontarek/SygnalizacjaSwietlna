@@ -1,0 +1,45 @@
+/*@!Encoding:1250*/
+
+
+//deklarujê zmienne u¿ywane przez program
+variables
+{
+  int amount_of_cars1=0;//ilosæ aut przy jednym sygnalizatorze, pocz¹tkowo 0
+  int amount_of_cars2=0;//ilosæ aut przy drugim sygnalizatorze, pocz¹tkowo 0
+  message Passage passage;//wiadomoœæ wysy³ana do LIGHT (czy w³¹czyæ czy wy³¹czyæ œwiat³a)
+  message Lights ligths;//wiadomoœæ wysy³ana do PASSAGE (czy w³¹czyæ czy wy³¹czyæ œwiat³a na przejœciu)
+}
+
+
+//reaguje na wiadomoœæ changeSwitch generowan¹ co 1 sekundê (bêdzie jeszcze do zmiany)
+on message changeSwitch{
+  
+  //pocz¹tkowo samochody mog¹ jeŸdziæ
+  ligths.Ligth1  = 1;
+  ligths.Ligth2  = 1;
+  passage.Pass = 0;//a piesi nie przechodz¹
+  output(ligths);//wysy³am tê wiadomoœæ na magistralê 
+  output(passage);//wysy³am tê wiadomoœæ na magistralê
+  
+  amount_of_cars1 -=5;//zmniejszam iloœæ aut o 5 
+  amount_of_cars2 -= 5;
+  if(amount_of_cars1<0)//jeœli jest mniej ni¿ 0 to ustawiam na 0
+     amount_of_cars1=0;
+  if(amount_of_cars2<0)
+     amount_of_cars2=0;
+  
+   write("aoc1= %d aoc2 = %d \n", amount_of_cars1,amount_of_cars2);//na konsoli wypisujê liczbê aut pod sygnalizatorami
+  
+  //nowe wiadomoœci, piesi przechodz¹, auta stoj¹
+  ligths.Ligth1  = 0;
+  ligths.Ligth2  = 0;
+  passage.Pass = 1;
+  output(ligths);
+  output(passage);
+  
+  amount_of_cars1 += random(10);//losujê ile przyjedzie aut do jednego i drugiego skrzy¿owania z zakresu od 1 do 9 w³¹cznie
+  amount_of_cars2 += random(10); 
+  
+  //koniec iteracji, nastêpna co sekundê
+}
+

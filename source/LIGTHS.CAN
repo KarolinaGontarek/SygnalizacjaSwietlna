@@ -1,0 +1,8 @@
+/*@!Encoding:1250*/
+
+//zmienia zmienne Light1Switch, Light2Switch na to co dostanie w Lights (sygna³y Ligth1 i Ligth2)
+on message Lights{
+  sysSetVariableInt(sysvar::Ligths::Ligth1Switch, this.Ligth1);
+  sysSetVariableInt(sysvar::Ligths::Ligth2Switch, this.Ligth2);
+}
+
