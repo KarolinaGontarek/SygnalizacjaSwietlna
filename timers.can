@@ -1,0 +1,77 @@
+/*@!Encoding:1250*/
+/*
+Na poczatek tworze zmienne czasowe w zaleznosci od tego
+jakie chce opoznienie (msTimer lub timer)
+*/
+variables{
+  timer t1;   // typ przechowuje czas w sekundach
+  msTimer t2; // ten w milisekundach
+}
+
+/*
+Dalej musze umiescic we fragmencie kodu funkcje 
+setTimer(nazwa_zmiennej, czas),tam gdzie chce,
+aby nastapilo opoznienie
+*/
+
+// ... np:
+setTimer(t1, 3);
+setTimer(t2, 3000);
+// ...
+
+/*
+Pozostaje tylko napisac skrypt "on timer", ktory przechowuje kod,
+ktory chcemy aby wykonal sie po danym opoznieniu
+*/
+// np:
+on timer t1
+{
+   //jakis kod, np zmiana swiatel
+}
+
+/*
+Mozna tez zostawic "on timer" pusty, powinno zadzialac, jednak
+u mnie nie dzialalo...
+Cos takiego skonsultowalbym z prowadzacym
+*/
+
+/*
+Gdy do "on timera" wstawimy setTimer(), to powinna wykonywac sie
+petla cykliczna z przerwa miedzy iteracjami rowna czasowi w setTimerze
+*/
+// np:
+on message msg
+{
+ //...
+  setTimer(t2,500);
+ //...
+}
+on timer t2
+{
+  //...
+  setTimer(t2,500);
+}
+
+/*
+Sa jeszcze funkcje obslugujace timera, moga sie przydac
+*/
+// np:
+
+isTimerActive(t) //-> zwroci 1 jak timer jest aktywny lub 0 gdy nie jest
+
+timer t;
+write("Timer aktywny? %d", isTimerActive(t)); // wypisze 0
+setTimer(t,5);
+write("Timer aktywny? %d", isTimerActive(t)); // wypisze 1
+
+//albo
+timeToElapse(t) //-> zwraca wartosc, ktora mowi nam za ile dany
+                //timer przestanie dzialac
+//np:
+timer t;
+setTimer(t,5);
+write("Czas do konca dzialania: %d", timeToElapse(t)); //wypisze 5
+
+
+
+

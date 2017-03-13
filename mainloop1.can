@@ -1,0 +1,69 @@
+/*@!Encoding:1250*/
+
+
+
+variables
+{
+  message lol hehe;
+  int i = 0;
+  int k = 0;
+  timer t1,t2,t3,t4;
+}
+
+
+
+on message changeSwitch
+{
+  switch(i)
+  {
+    case 0:
+      setTimer(t4,5);
+      setTimer(t2, 1);
+      i=1;
+      break;
+    case 1:
+      setTimer(t3,5);
+      setTimer(t1,1);
+      i=0;
+      break;
+  }
+  output(hehe);
+ 
+}
+
+on timer t1
+{
+  putValue(yellow_1,1);
+      putValue(red_1,0);
+      putValue(green_1,0);
+      putValue(pedestrian_1,0);
+}
+
+on timer t2
+{
+  putValue(yellow_1,1);
+      putValue(red_1,1);
+      putValue(green_1,0);
+      putValue(pedestrian_1,0);
+}
+
+on timer t3
+{
+      putValue(yellow_1,0);
+      putValue(red_1,0);
+      putValue(green_1,1);
+      putValue(pedestrian_1,0);
+}
+
+on timer t4
+{
+      putValue(yellow_1,0);
+      putValue(red_1,1);
+      putValue(green_1,0);
+      putValue(pedestrian_1,1);
+}
+
+on message lol
+{
+  write("hehehehe");
+}
