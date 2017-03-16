@@ -1,1 +1,208 @@
 /*@!Encoding:1250*/
+variables
+{
+  message hard_bit hardbit;
+  message start star;
+  message m1_1 m11;
+  message m1_2 m12;
+  message m2_1 m21;
+  message m2_2 m22;
+  message m3_2 m32;
+  message m3_1 m31;
+  message m4_1 m41;
+  message m4_2 m42;
+  message breakdown bd;
+  
+  timer t11;
+  timer t12;
+  timer t13;
+  timer t21;
+  timer t22;
+  timer t23;
+  timer t31;
+  timer t32;
+  timer t33;
+  timer t41;
+  timer t42;
+  timer t43;
+  timer bd1;
+  timer bd2;
+}
+
+
+
+on message hard_bit
+{
+  
+  putValue(hard_light,1);
+}
+
+on message m1_1
+{
+  if(check_bits())
+    setTimer(t11,1);
+  else 
+   output(bd);
+  
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+on message m2_1
+{
+  if(check_bits())
+    setTimer(t21,1);
+  else 
+   output(bd);
+    
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+on message m3_1
+{
+  if(check_bits())
+    setTimer(t31,1);
+  else 
+   output(bd);
+    
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+on message m4_1
+{
+  if(check_bits())
+    setTimer(t41,1);
+  else 
+   output(bd);
+    
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+on timer t11
+{
+  clear();
+  putValue(yellow_1,1);
+  settimer(t12,1);
+}
+
+on timer t12
+{
+  clear();
+  putValue(red_1,0);
+  putValue(green_1,1);
+  setTimer(t13,6);
+  output(m12);
+}
+
+on timer t13
+{
+  clear();
+  putValue(red_1,0);
+  putValue(yellow_1,1);
+  output(m21);
+}
+
+on timer t21
+{
+  clear();
+  putValue(yellow_2,1);
+  setTimer(t22,1);
+}
+
+on timer t22
+{
+  clear();
+  putValue(red_2,0);
+  putValue(green_2,1);
+  setTimer(t23,4);
+}
+
+on timer t23
+{
+  clear();
+  putValue(red_2,0);
+  putValue(yellow_2,1);
+  output(m31);
+}
+
+on timer t31
+{
+  clear();
+  putValue(yellow_3,1);
+  setTimer(t32,1);
+}
+
+on timer t32
+{
+  clear();
+  putValue(red_3,0);
+  putValue(green_3,1);
+  output(m32);
+  setTimer(t33, 4);
+}
+
+on timer t33
+{
+  clear();
+  putValue(red_3,0);
+  putValue(yellow_3,1);
+  output(star);
+}
+
+on timer t41
+{
+  clear();
+  putValue(yellow_4,1);
+  setTimer(t42,1);
+}
+
+on timer t42
+{
+  clear();
+  putValue(red_4,0);
+  putValue(green_4,1);
+  setTimer(t43, 3);
+}
+
+on timer t43
+{
+  clear();
+  putValue(red_4,0);
+  putValue(yellow_4,1);
+  output(star);
+}
+
+void clear()
+{
+  putValue(green_1,0);
+  putValue(green_2,0);
+  putValue(green_3,0);
+  putValue(yellow_1,0);
+  putValue(yellow_2,0);
+  putValue(yellow_3,0);
+  putValue(red_1,1);
+  putValue(red_2,1);
+  putValue(red_3,1);
+  putValue(P1,0);
+  putValue(P2,0);
+  putValue(P3,0);
+  putValue(P4,0);
+}
+
+int check_bits()
+{
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 ){
+    return 0;
+  }
+  else
+    output(hardbit);
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 )
+  {
+    return 0;
+  }
+  else
+    return 1;
+}

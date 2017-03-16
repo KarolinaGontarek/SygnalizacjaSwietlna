@@ -1,6 +1,36 @@
 <?xml version="1.0"?>
 <Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null">
   <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="test">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text 2">
+      <Property Name="Name">StaticTextControl3</Property>
+      <Property Name="Size">67, 13</Property>
+      <Property Name="Location">400, 82</Property>
+      <Property Name="Text">hard bit pass</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl6" ControlName="LED Control 5">
+      <Property Name="Name">LEDControl6</Property>
+      <Property Name="Size">24, 24</Property>
+      <Property Name="Location">419, 41</Property>
+      <Property Name="UsedLEDColorOn">Lime</Property>
+      <Property Name="UsedLEDColorOff">Red</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;hard_pass;1;;;-1</Property>
+      <Property Name="TabIndex">9</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text 2">
+      <Property Name="Name">StaticTextControl2</Property>
+      <Property Name="Size">64, 13</Property>
+      <Property Name="Location">503, 82</Property>
+      <Property Name="Text">hard bit light</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl5" ControlName="LED Control 5">
+      <Property Name="Name">LEDControl5</Property>
+      <Property Name="Size">24, 24</Property>
+      <Property Name="Location">524, 41</Property>
+      <Property Name="UsedLEDColorOn">Lime</Property>
+      <Property Name="UsedLEDColorOff">Red</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;hard_light;1;;;-1</Property>
+      <Property Name="TabIndex">7</Property>
+    </Object>
     <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl4" ControlName="LED Control 4">
       <Property Name="Name">LEDControl4</Property>
       <Property Name="Size">24, 24</Property>
@@ -22,7 +52,7 @@
       <Property Name="Location">334, 168</Property>
       <Property Name="UsedLEDColorOn">Lime</Property>
       <Property Name="UsedLEDColorOff">Red</Property>
-      <Property Name="SymbolConfiguration">4;1;Conjuction;;;pedestrian_1;1;;;-1</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;P1;1;;;-1</Property>
       <Property Name="TabIndex">4</Property>
     </Object>
     <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl2" ControlName="LED Control 2">

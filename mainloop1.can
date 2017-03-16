@@ -4,66 +4,115 @@
 
 variables
 {
-  message lol hehe;
-  int i = 0;
-  int k = 0;
-  timer t1,t2,t3,t4;
+  message hard_bit hardbit;
+  message start star;
+  message m1_1 m11;
+  message m1_2 m12;
+  message m2_1 m21;
+  message m2_2 m22;
+  message m3_2 m32;
+  message m3_1 m31;
+  message m4_1 m41;
+  message m4_2 m42;
+  message breakdown bd;
+  
+  timer t11;
+  timer t12;
+  timer t13;
+  timer t21;
+  timer t22;
+  timer t23;
+  timer t31;
+  timer t32;
+  timer t33;
+  timer t41;
+  timer t42;
+  timer t43;
+  timer bd1;
+  timer bd2;
 }
-
-
-
-on message changeSwitch
-{
-  switch(i)
-  {
-    case 0:
-      setTimer(t4,5);
-      setTimer(t2, 1);
-      i=1;
-      break;
-    case 1:
-      setTimer(t3,5);
-      setTimer(t1,1);
-      i=0;
-      break;
-  }
-  output(hehe);
  
+
+on start
+{
+  output(hardbit);
+  output(star);
 }
 
-on timer t1
+on message start
 {
+  if(check_bits())
+      output(m11);
+  else 
+    output(bd);
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+void clear()
+{
+  putValue(green_1,0);
+  putValue(green_2,0);
+  putValue(green_3,0);
+  putValue(yellow_1,0);
+  putValue(yellow_2,0);
+  putValue(yellow_3,0);
+  putValue(red_1,1);
+  putValue(red_2,1);
+  putValue(red_3,1);
+  putValue(P1,0);
+  putValue(P2,0);
+  putValue(P3,0);
+  putValue(P4,0);
+}
+
+int check_bits()
+{
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 ){
+    return 0;
+  }
+  else
+    output(hardbit);
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 )
+  {
+    return 0;
+  }
+  else
+    return 1;
+}
+
+on message breakdown
+{
+  setTimer(bd1,2);
+}
+
+on timer bd1
+{
+  clear();
+  putValue(red_1,0);
+  putValue(red_2,0);
+  putValue(red_3,0);
+  putValue(red_4,0);
+  
   putValue(yellow_1,1);
-      putValue(red_1,0);
-      putValue(green_1,0);
-      putValue(pedestrian_1,0);
+  putValue(yellow_2,1);
+  putValue(yellow_3,1);
+  putValue(yellow_4,1);
+  setTimer(bd2,2);
 }
 
-on timer t2
+on timer bd2
 {
-  putValue(yellow_1,1);
-      putValue(red_1,1);
-      putValue(green_1,0);
-      putValue(pedestrian_1,0);
-}
-
-on timer t3
-{
-      putValue(yellow_1,0);
-      putValue(red_1,0);
-      putValue(green_1,1);
-      putValue(pedestrian_1,0);
-}
-
-on timer t4
-{
-      putValue(yellow_1,0);
-      putValue(red_1,1);
-      putValue(green_1,0);
-      putValue(pedestrian_1,1);
-}
-
-on message lol
-{
-  write("hehehehe");
+  clear();
+  
+  putValue(red_1,0);
+  putValue(red_2,0);
+  putValue(red_3,0);
+  putValue(red_4,0);
+  
+  putValue(yellow_1,0);
+  putValue(yellow_2,0);
+  putValue(yellow_3,0);
+  putValue(yellow_4,0);
+  output(bd);
 }
