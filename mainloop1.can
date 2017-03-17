@@ -58,18 +58,18 @@ on message start
   ustawiam zmienne œrodowiskowe
   opisuj¹ce czas trwania œwiat³a zielonego
   */
-  numOfCars1 = getValue(cars_1)+ random(15)-5;//doje¿dzaj¹ nowe samochody random(10)
+  numOfCars1 = getValue(cars_1)+ random(13);//doje¿dzaj¹ nowe samochody random(10)
     if( numOfCars1 < 0)
     numOfCars1 = 0;
   if( numOfCars1 == 0)
     putValue(time1, 1);
   else if( numOfCars1 < 6)
-    putValue(time1, 2);
+    putValue(time1, 3);
   else
     putValue(time1, 4);
   putValue(cars_1, numOfCars1);
   
-  numOfCars2 = getValue(cars_2)+random(15)-5;
+  numOfCars2 = getValue(cars_2)+random(15)-4;
   if( numOfCars2 < 0)
     numOfCars2 = 0;
   if( numOfCars2 == 0)
@@ -80,7 +80,7 @@ on message start
     putValue(time2, 4);
   putValue(cars_2, numOfCars2);
   
-  numOfCars3 = getValue(cars_3)+random(15)-5;
+  numOfCars3 = getValue(cars_3)+random(15)-4;
   if( numOfCars3 < 0)
     numOfCars3 = 0;
   if( numOfCars3 == 0)
@@ -115,12 +115,15 @@ void clear()
   putValue(green_1,0);
   putValue(green_2,0);
   putValue(green_3,0);
+  putValue(green_4,0);
   putValue(yellow_1,0);
   putValue(yellow_2,0);
   putValue(yellow_3,0);
+  putValue(yellow_4,0);
   putValue(red_1,1);
   putValue(red_2,1);
   putValue(red_3,1);
+  putValue(red_4,1);
   putValue(P1,0);
   putValue(P2,0);
   putValue(P3,0);

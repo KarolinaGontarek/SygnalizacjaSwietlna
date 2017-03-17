@@ -75,14 +75,17 @@ void clear()
   putValue(yellow_1,0);
   putValue(yellow_2,0);
   putValue(yellow_3,0);
+  putValue(yellow_4,0);
   putValue(red_1,1);
   putValue(red_2,1);
   putValue(red_3,1);
+  putValue(red_4,1);
   putValue(P1,0);
   putValue(P2,0);
   putValue(P3,0);
   putValue(P4,0);
 }
+
 
 int check_bits()
 {

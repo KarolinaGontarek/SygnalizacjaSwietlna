@@ -1,6 +1,74 @@
 <?xml version="1.0"?>
 <Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null">
   <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Skrzyżowanie1">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl4" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl4</Property>
+      <Property Name="Size">140, 20</Property>
+      <Property Name="Location">739, 334</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;256</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">cars_2:</Property>
+      <Property Name="DescriptionSize">41, 20</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;cars_2;1;;;-1</Property>
+      <Property Name="TabIndex">48</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl3</Property>
+      <Property Name="Size">140, 20</Property>
+      <Property Name="Location">511, 24</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;256</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">cars_4:</Property>
+      <Property Name="DescriptionSize">41, 20</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;cars_4;1;;;-1</Property>
+      <Property Name="TabIndex">47</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl2</Property>
+      <Property Name="Size">140, 20</Property>
+      <Property Name="Location">202, 42</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;256</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">cars_3:</Property>
+      <Property Name="DescriptionSize">41, 20</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;cars_3;1;;;-1</Property>
+      <Property Name="TabIndex">46</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl1</Property>
+      <Property Name="Size">140, 20</Property>
+      <Property Name="Location">739, 94</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;256</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">cars_1:</Property>
+      <Property Name="DescriptionSize">41, 20</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;cars_1;1;;;-1</Property>
+      <Property Name="TabIndex">45</Property>
+    </Object>
     <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text 2">
       <Property Name="Name">StaticTextControl3</Property>
       <Property Name="Size">67, 13</Property>
