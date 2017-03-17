@@ -1,0 +1,101 @@
+/*@!Encoding:1250*/
+variables
+{
+  message hard_bit hardbit;
+  message start star;
+  message m1_1 m11;
+  message m1_2 m12;
+  message m2_1 m21;
+  message m2_2 m22;
+  message m3_2 m32;
+  message m3_1 m31;
+  message m4_1 m41;
+  message m4_2 m42;
+  message breakdown bd;
+  
+  timer p1;
+  timer p2;
+}
+
+
+on message hard_bit
+{
+  
+  putValue(hard_pass,1);
+}
+
+
+on message m3_2
+{
+ if(check_bits()){
+      putValue(P2,1);
+      putValue(P4,1);
+      setTimer(p1,2);}
+  else 
+   output(bd);
+
+   putValue(hard_pass,0);
+   putValue(hard_light,0);
+   
+}
+
+on message m1_2
+{
+  if(check_bits()){
+      putValue(P1,1);
+      putValue(P3,1);
+      setTimer(p2,2);}
+  else 
+   output(bd);
+  
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+on timer p1
+{
+   putValue(P2,0);
+   putValue(P4,0);
+}
+
+on timer p2
+{
+   putValue(P1,0);
+   putValue(P3,0);
+}
+
+
+
+
+void clear()
+{
+  putValue(green_1,0);
+  putValue(green_2,0);
+  putValue(green_3,0);
+  putValue(yellow_1,0);
+  putValue(yellow_2,0);
+  putValue(yellow_3,0);
+  putValue(red_1,1);
+  putValue(red_2,1);
+  putValue(red_3,1);
+  putValue(P1,0);
+  putValue(P2,0);
+  putValue(P3,0);
+  putValue(P4,0);
+}
+
+int check_bits()
+{
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 ){
+    return 0;
+  }
+  else
+    output(hardbit);
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 )
+  {
+    return 0;
+  }
+  else
+    return 1;
+}
+

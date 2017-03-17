@@ -1,0 +1,179 @@
+/*@!Encoding:1250*/
+
+
+
+variables
+{
+  message hard_bit hardbit;
+  message start star;
+  message m1_1 m11;
+  message m1_2 m12;
+  message m2_1 m21;
+  message m2_2 m22;
+  message m3_2 m32;
+  message m3_1 m31;
+  message m4_1 m41;
+  message m4_2 m42;
+  message breakdown bd;
+  
+  timer t11;
+  timer t12;
+  timer t13;
+  timer t21;
+  timer t22;
+  timer t23;
+  timer t31;
+  timer t32;
+  timer t33;
+  timer t41;
+  timer t42;
+  timer t43;
+  timer bd1;
+  timer bd2;
+  
+  int numOfCars1;
+  int numOfCars2;
+  int numOfCars3;
+  int numOfCars4;
+}
+ 
+
+on start
+{
+  //inicjalizujê iloœæ samochodów przed œwiat³ami
+  numOfCars1 = 0;
+  numOfCars2 = 0;
+  numOfCars3 = 0;
+  numOfCars4 = 0;
+  
+  output(hardbit);
+  output(star);
+}
+
+on message start
+{
+  /*dodane przeze mnie -> nowa iloœæ samochodów
+  random(15) jest ok czy daæ inn¹ liczbê np. jeœli chcemy traktujemy czeœæ dróg jako bardziej g³owne to mo¿na
+  tym bardziej g³ównym daæ rand(20) czy coœ w tym stylu ?
+  ustawiam zmienne œrodowiskowe
+  opisuj¹ce czas trwania œwiat³a zielonego
+  */
+  numOfCars1 = getValue(cars_1)+ random(15)-5;//doje¿dzaj¹ nowe samochody random(10)
+    if( numOfCars1 < 0)
+    numOfCars1 = 0;
+  if( numOfCars1 == 0)
+    putValue(time1, 1);
+  else if( numOfCars1 < 6)
+    putValue(time1, 2);
+  else
+    putValue(time1, 4);
+  putValue(cars_1, numOfCars1);
+  
+  numOfCars2 = getValue(cars_2)+random(15)-5;
+  if( numOfCars2 < 0)
+    numOfCars2 = 0;
+  if( numOfCars2 == 0)
+    putValue(time2, 1);
+  else if( numOfCars2 < 6)
+    putValue(time2, 2);
+  else
+    putValue(time2, 4);
+  putValue(cars_2, numOfCars2);
+  
+  numOfCars3 = getValue(cars_3)+random(15)-5;
+  if( numOfCars3 < 0)
+    numOfCars3 = 0;
+  if( numOfCars3 == 0)
+    putValue(time3, 1);
+  else if( numOfCars3 < 6)
+    putValue(time3, 2);
+  else
+    putValue(time3, 4);
+  putValue(cars_3, numOfCars3);
+  
+  numOfCars4 = getValue(cars_4)+ random(15)-5;
+  if( numOfCars4 < 0)
+    numOfCars4 = 0;
+  if( numOfCars4 == 0)
+    putValue(time4, 1);
+  else if( numOfCars4 < 6)
+    putValue(time4, 2);
+  else
+    putValue(time4, 4);
+  putValue(cars_4, numOfCars4);
+
+  if(check_bits())
+      output(m11);
+  else 
+    output(bd);
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
+}
+
+void clear()
+{
+  putValue(green_1,0);
+  putValue(green_2,0);
+  putValue(green_3,0);
+  putValue(yellow_1,0);
+  putValue(yellow_2,0);
+  putValue(yellow_3,0);
+  putValue(red_1,1);
+  putValue(red_2,1);
+  putValue(red_3,1);
+  putValue(P1,0);
+  putValue(P2,0);
+  putValue(P3,0);
+  putValue(P4,0);
+}
+
+int check_bits()
+{
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 ){
+    return 0;
+  }
+  else
+    output(hardbit);
+  if(getValue(hard_light) == 0 || getValue(hard_pass) == 0 )
+  {
+    return 0;
+  }
+  else
+    return 1;
+}
+
+on message breakdown
+{
+  setTimer(bd1,2);
+}
+
+on timer bd1
+{
+  clear();
+  putValue(red_1,0);
+  putValue(red_2,0);
+  putValue(red_3,0);
+  putValue(red_4,0);
+  
+  putValue(yellow_1,1);
+  putValue(yellow_2,1);
+  putValue(yellow_3,1);
+  putValue(yellow_4,1);
+  setTimer(bd2,2);
+}
+
+on timer bd2
+{
+  clear();
+  
+  putValue(red_1,0);
+  putValue(red_2,0);
+  putValue(red_3,0);
+  putValue(red_4,0);
+  
+  putValue(yellow_1,0);
+  putValue(yellow_2,0);
+  putValue(yellow_3,0);
+  putValue(yellow_4,0);
+  output(bd);
+}
