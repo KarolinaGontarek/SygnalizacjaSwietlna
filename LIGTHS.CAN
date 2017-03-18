@@ -38,6 +38,7 @@ variables
 
 on message hard_bit
 {
+  
   putValue(hard_light,1);
 }
 
@@ -63,11 +64,11 @@ on timer t11
 on timer t12
 {
   clear();
-  //write("time1: %d", getValue(time1));
+  write("time1: %d", getValue(time1));
   putValue(red_1,0);
   putValue(green_1,1);
   setTimer(t13,getValue(time1));
-  output(m12);//przejœcie dla pieszych
+  output(m12);
 }
 
 on timer t13
@@ -82,14 +83,7 @@ on timer t13
     numOfCars1 = 0;
   putValue(cars_1,numOfCars1);
   
-  if( !getValue(skip_2)) //cars_2 > 0
-    output(m21); 
-  else{//cars_2 == 0
-   if( !getValue(skip_3))//cars_3 > 0
-    output(m31);
-   else
-    output(m32);//cars_3 ==0
-  }
+  output(m21); 
 }
 
 on message m2_1
@@ -116,7 +110,7 @@ on timer t21
 on timer t22
 {
   clear();
-  //write("time2: %d", getValue(time2));
+  write("time2: %d", getValue(time2));
   putValue(red_2,0);
   putValue(green_2,1);
   setTimer(t23,getValue(time2));
@@ -134,10 +128,7 @@ on timer t23
     numOfCars2 = 0;
   putValue(cars_2,numOfCars2);
   
-  if( !getValue(skip_3))
-    output(m31);
-  else
-    output(m32);
+  output(m31);
 }
 
 on message m3_1
@@ -162,10 +153,10 @@ on timer t31
 on timer t32
 {
   clear();
-  //write("time3: %d", getValue(time3));
+  write("time3: %d", getValue(time3));
   putValue(red_3,0);
   putValue(green_3,1);
-  output(m32);//przejœcie dla pieszych
+  output(m32);
   setTimer(t33, getValue(time3));
 }
 
@@ -181,11 +172,7 @@ on timer t33
     numOfCars3 = 0;
   putValue(cars_3,numOfCars3);
   
-  /*sprawdzam, czy iloœæ samochodów wynosi 0, jeœli tak, to omijam czêsc 4*/
-  if( !getValue(skip_4) )
-    output(m41);
-  else
-    output(star);
+  output(m41);
 }
 
 on message m4_1
@@ -210,7 +197,7 @@ on timer t41
 on timer t42
 {
   clear();
-  //write("time4: %d", getValue(time4));
+  write("time4: %d", getValue(time4));
   putValue(red_4,0);
   putValue(green_4,1);
   setTimer(t43, getValue(time4));

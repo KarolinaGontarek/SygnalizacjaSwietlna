@@ -52,10 +52,6 @@ on start
 
 on message start
 {
-  putValue(skip_1, 0);
-  putValue(skip_2, 0);
-  putValue(skip_3, 0);
-  putValue(skip_4, 0);
   /*dodane przeze mnie -> nowa iloœæ samochodów
   random(15) jest ok czy daæ inn¹ liczbê np. jeœli chcemy traktujemy czeœæ dróg jako bardziej g³owne to mo¿na
   tym bardziej g³ównym daæ rand(20) czy coœ w tym stylu ?
@@ -66,7 +62,7 @@ on message start
     if( numOfCars1 < 0)
     numOfCars1 = 0;
   if( numOfCars1 == 0)
-    putValue(skip_1, 1);//czêœc 1 zostanie ominiêta, time1 olewam bo nie ma znaczenia
+    putValue(time1, 1);
   else if( numOfCars1 < 6)
     putValue(time1, 3);
   else
@@ -77,7 +73,7 @@ on message start
   if( numOfCars2 < 0)
     numOfCars2 = 0;
   if( numOfCars2 == 0)
-    putValue(skip_2, 1);
+    putValue(time2, 1);
   else if( numOfCars2 < 6)
     putValue(time2, 2);
   else
@@ -88,7 +84,7 @@ on message start
   if( numOfCars3 < 0)
     numOfCars3 = 0;
   if( numOfCars3 == 0)
-    putValue(skip_3, 1);
+    putValue(time3, 1);
   else if( numOfCars3 < 6)
     putValue(time3, 2);
   else
@@ -99,20 +95,15 @@ on message start
   if( numOfCars4 < 0)
     numOfCars4 = 0;
   if( numOfCars4 == 0)
-    putValue(skip_4, 1);
+    putValue(time4, 1);
   else if( numOfCars4 < 6)
     putValue(time4, 2);
   else
     putValue(time4, 4);
   putValue(cars_4, numOfCars4);
 
-  if(check_bits()){
-    if( !getValue(skip_1)) // cars_1 >0
-        output(m11);
-    else{// (cars_1 == 0
-      output(m12);
-    }
-  }
+  if(check_bits())
+      output(m11);
   else 
     output(bd);
   putValue(hard_pass,0);
@@ -189,15 +180,3 @@ on timer bd2
   putValue(yellow_4,0);
   output(bd);
 }
-
-
-/*niezalie¿nie od sekwencji sprawdzam hardbity*/
-on message independent_check
-{
-  //write("independent chcek");
-  if(!check_bits())
-    output(bd);
-  putValue(hard_pass,0);
-  putValue(hard_light,0); 
-}
-
