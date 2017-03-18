@@ -36,7 +36,20 @@ on message m3_2
 
    putValue(hard_pass,0);
    putValue(hard_light,0);
-   
+
+  if( getValue(skip_3))//sygnalizacja nr 3 siê nie wykonuje[bo jeœli siê wykonuje to musi skoñczyæ i kontrola skip_4 jest tam ]
+  {
+    if( !getValue(skip_4) )//cars_4 > 0
+      output(m41);
+   else//cars_4 == 0
+      output(m32);
+  
+    if( !getValue(skip_4) ){
+        output(m41); 
+      }
+    else{
+    output(star); }
+    }  
 }
 
 on message m1_2
@@ -50,6 +63,20 @@ on message m1_2
   
   putValue(hard_pass,0);
   putValue(hard_light,0);
+  
+  if( getValue(skip_1))//sygnalizacja nr 1 siê nie wykonuje[bo jeœli siê wykonuje to musi skoñczyæ i kontrola skip_2 jest tam ]
+    {
+      if( !getValue(skip_2)){//cars_3 > 0
+        output(m21);
+      }
+      else//cars_2 == 0
+      {
+        if( !getValue(skip_3) )//cars_3 > 0
+          output(m31);
+        else//cars_3 == 0
+        output(m32);
+      }
+    }
 }
 
 on timer p1
