@@ -1,6 +1,70 @@
 <?xml version="1.0"?>
 <Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null">
   <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Skrzyżowanie1">
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl8" Children="Controls" ControlName="Radio Button 8">
+      <Property Name="Name">RadioButtonControl8</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">632, 496</Property>
+      <Property Name="Text">passage1</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage1;1;;;-1</Property>
+      <Property Name="TabIndex">59</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl7" Children="Controls" ControlName="Radio Button 7">
+      <Property Name="Name">RadioButtonControl7</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">264, 496</Property>
+      <Property Name="Text">passage1</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage1;1;;;-1</Property>
+      <Property Name="TabIndex">58</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl6" Children="Controls" ControlName="Radio Button 6">
+      <Property Name="Name">RadioButtonControl6</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">202, 438</Property>
+      <Property Name="Text">passage4</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage4;1;;;-1</Property>
+      <Property Name="TabIndex">57</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5" Children="Controls" ControlName="Radio Button 5">
+      <Property Name="Name">RadioButtonControl5</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">202, 110</Property>
+      <Property Name="Text">passage4</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage4;1;;;-1</Property>
+      <Property Name="TabIndex">56</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4" Children="Controls" ControlName="Radio Button 4">
+      <Property Name="Name">RadioButtonControl4</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">264, 63</Property>
+      <Property Name="Text">passage3</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage3;1;;;-1</Property>
+      <Property Name="TabIndex">55</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3" Children="Controls" ControlName="Radio Button 3">
+      <Property Name="Name">RadioButtonControl3</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">639, 63</Property>
+      <Property Name="Text">passage3</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage3;1;;;-1</Property>
+      <Property Name="TabIndex">54</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2" Children="Controls" ControlName="Radio Button 2">
+      <Property Name="Name">RadioButtonControl2</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">703, 444</Property>
+      <Property Name="Text">passage2</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage2;1;;;-1</Property>
+      <Property Name="TabIndex">53</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl1" Children="Controls" ControlName="Radio Button">
+      <Property Name="Name">RadioButtonControl1</Property>
+      <Property Name="Size">71, 17</Property>
+      <Property Name="Location">696, 117</Property>
+      <Property Name="Text">passage2</Property>
+      <Property Name="SymbolConfiguration">4;1;Conjuction;;;passage2;1;;;-1</Property>
+      <Property Name="TabIndex">52</Property>
+    </Object>
     <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl4" Children="Controls" ControlName="Input/Output Box">
       <Property Name="Name">TextBoxControl4</Property>
       <Property Name="Size">140, 20</Property>

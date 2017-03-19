@@ -38,7 +38,6 @@ variables
 
 on message hard_bit
 {
-  
   putValue(hard_light,1);
 }
 
@@ -58,17 +57,28 @@ on timer t11
   clear();
   putValue(yellow_1,1);
   //czas trwania œwiat³a zielonego zale¿y od timex
-  settimer(t12,1);
+  if( check_bits())
+    settimer(t12,1);
+  else 
+    output(bd);
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
 }
 
 on timer t12
 {
   clear();
-  write("time1: %d", getValue(time1));
+  //write("time1: %d", getValue(time1));
   putValue(red_1,0);
   putValue(green_1,1);
+  
+  if( getValue(passage1) || getValue(passage3) ){
+    putValue(passage1, 0);
+    putValue(passage3, 0);
+    output(m12);
+  }
   setTimer(t13,getValue(time1));
-  output(m12);
+    //przejœcie dla pieszych
 }
 
 on timer t13
@@ -83,7 +93,20 @@ on timer t13
     numOfCars1 = 0;
   putValue(cars_1,numOfCars1);
   
-  output(m21); 
+  if( !getValue(skip_2)) //cars_2 > 0
+    output(m21); 
+  else{//cars_2 == 0
+   if( !getValue(skip_3))//cars_3 > 0
+    output(m31);
+   else 
+    if(getValue(passage2) || getValue(passage4) )
+      output(m32);//cars_3 ==0
+    else
+      if(getValue(cars_4))
+        output(m41);
+      else
+        output(star);
+  }
 }
 
 on message m2_1
@@ -104,13 +127,18 @@ on timer t21
   clear();
   putValue(yellow_2,1);
   //czas trwania œwiat³a zielonego zale¿y od timex
-  setTimer(t22,1);
+  if( check_bits())
+    setTimer(t22,1);
+  else 
+    output(bd);
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
 }
 
 on timer t22
 {
   clear();
-  write("time2: %d", getValue(time2));
+  //write("time2: %d", getValue(time2));
   putValue(red_2,0);
   putValue(green_2,1);
   setTimer(t23,getValue(time2));
@@ -128,7 +156,16 @@ on timer t23
     numOfCars2 = 0;
   putValue(cars_2,numOfCars2);
   
-  output(m31);
+  if( !getValue(skip_3))
+    output(m31);
+  else
+    if( getValue(passage2) || getValue(passage4))
+      output(m32);
+    else
+      if( !getValue(skip_4) )
+        output(m41);
+      else
+        output(star);
 }
 
 on message m3_1
@@ -147,16 +184,26 @@ on timer t31
   clear();
   putValue(yellow_3,1);
   //czas trwania œwiat³a zielonego zale¿y od timex
-  setTimer(t32,1);
+  if( check_bits())
+    setTimer(t32,1);
+  else 
+    output(bd);
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
 }
 
 on timer t32
 {
   clear();
-  write("time3: %d", getValue(time3));
+  //write("time3: %d", getValue(time3));
   putValue(red_3,0);
   putValue(green_3,1);
-  output(m32);
+  
+  if( getValue(passage2) || getValue(passage4) ){
+    putValue(passage2, 0);
+    putValue(passage4, 0);
+    output(m32);//przejœcie dla pieszych
+  }
   setTimer(t33, getValue(time3));
 }
 
@@ -172,7 +219,11 @@ on timer t33
     numOfCars3 = 0;
   putValue(cars_3,numOfCars3);
   
-  output(m41);
+  /*sprawdzam, czy iloœæ samochodów wynosi 0, jeœli tak, to omijam czêsc 4*/
+  if( !getValue(skip_4) )
+    output(m41);
+  else
+    output(star);
 }
 
 on message m4_1
@@ -191,13 +242,18 @@ on timer t41
   clear();
   putValue(yellow_4,1);
   //czas trwania œwiat³a zielonego zale¿y od timex
-  setTimer(t42,1);
+  if( check_bits())
+    setTimer(t42,1);
+  else 
+    output(bd);
+  putValue(hard_pass,0);
+  putValue(hard_light,0);
 }
 
 on timer t42
 {
   clear();
-  write("time4: %d", getValue(time4));
+  //write("time4: %d", getValue(time4));
   putValue(red_4,0);
   putValue(green_4,1);
   setTimer(t43, getValue(time4));
