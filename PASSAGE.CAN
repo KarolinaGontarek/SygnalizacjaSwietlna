@@ -12,6 +12,11 @@ variables
   message m4_1 m41;
   message m4_2 m42;
   message breakdown bd;
+ message jeden one;
+  message dwa two;
+  message trzy three;
+  message check22 check2;
+    message check33 check3;
   
   timer p1;
   timer p2;
@@ -24,9 +29,29 @@ on message hard_bit
   putValue(hard_pass,1);
 }
 
+on message check22
+{
+  putValue(pass_c,0);
+}
+
+on message dwa
+{
+  if ( getValue(pass_c)==1 || getValue(manual_c2)==1)
+  {
+    putValue(hard_light,0);
+  
+  }
+  else{
+   putValue(light_c,1);
+ 
+   output(check2);}
+}
+
 
 on message m3_2
 {
+  if(getValue(hard_light)==1)
+  {
  if(check_bits()){
       putValue(P2,1);
       putValue(P4,1);
@@ -35,7 +60,7 @@ on message m3_2
    output(bd);
 
    putValue(hard_pass,0);
-   putValue(hard_light,0);
+   
 
   if( getValue(skip_3))//sygnalizacja nr 3 siê nie wykonuje[bo jeœli siê wykonuje to musi skoñczyæ i kontrola skip_4 jest tam ]
   {
@@ -50,10 +75,15 @@ on message m3_2
     else{
     output(star); }
     }  
+  }
+   else
+    output(bd);
 }
 
 on message m1_2
 {
+  if(getValue(hard_light)==1)
+  {
   if(check_bits()){
       putValue(P1,1);
       putValue(P3,1);
@@ -62,7 +92,7 @@ on message m1_2
    output(bd);
   
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+
   
   if( getValue(skip_1))//sygnalizacja nr 1 siê nie wykonuje[bo jeœli siê wykonuje to musi skoñczyæ i kontrola skip_2 jest tam ]
     {
@@ -83,6 +113,9 @@ on message m1_2
               output(star);
       }
     }
+}
+   else
+    output(bd);
 }
 
 on timer p1

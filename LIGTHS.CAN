@@ -12,6 +12,11 @@ variables
   message m4_1 m41;
   message m4_2 m42;
   message breakdown bd;
+  message jeden one;
+  message dwa two;
+  message trzy three;
+  message check22 check2; 
+  message check33 check3;
   
   timer t11;
   timer t12;
@@ -34,22 +39,42 @@ variables
   int numOfCars4;
 }
 
+on message check22
+{
+  putValue(light_c,0);
+}
 
+on message trzy
+{
+  if ( getValue(light_c)==1 || getValue(manual_c3)==1)
+  {
+        putValue(hard_light,0);
+        
+  }
+  else{
+   putValue(main_c,1);
+   output(check2);}
+}
 
 on message hard_bit
 {
-  putValue(hard_light,1);
+  putValue(hard_pass,1);
 }
 
 on message m1_1
 {
+  if(getValue(hard_light)==1)
+  {
   if(check_bits())
     setTimer(t11,1);
   else 
    output(bd);
   
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+  }
+   else
+    output(bd);
+ 
 }
 
 on timer t11
@@ -62,7 +87,7 @@ on timer t11
   else 
     output(bd);
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+
 }
 
 on timer t12
@@ -111,15 +136,20 @@ on timer t13
 
 on message m2_1
 {
+  if(getValue(hard_light)==1)
+  {
   if(check_bits())
     setTimer(t21,1);
   else 
    output(bd);
     
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+  }
+   else
+    output(bd);
 }
 
+  
 
 
 on timer t21
@@ -132,7 +162,7 @@ on timer t21
   else 
     output(bd);
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+
 }
 
 on timer t22
@@ -170,13 +200,17 @@ on timer t23
 
 on message m3_1
 {
+  if(getValue(hard_light)==1)
+  {
   if(check_bits())
     setTimer(t31,1);
   else 
    output(bd);
     
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+  }
+   else
+    output(bd);
 }
 
 on timer t31
@@ -189,7 +223,7 @@ on timer t31
   else 
     output(bd);
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+  
 }
 
 on timer t32
@@ -228,13 +262,20 @@ on timer t33
 
 on message m4_1
 {
+  if(getValue(hard_light)==1)
+  {
   if(check_bits())
     setTimer(t41,1);
   else 
    output(bd);
     
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+  }
+  else
+    output(bd);
+  
+  
+  
 }
 
 on timer t41
@@ -247,7 +288,7 @@ on timer t41
   else 
     output(bd);
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+ 
 }
 
 on timer t42

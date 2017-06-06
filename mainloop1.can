@@ -15,6 +15,11 @@ variables
   message m4_1 m41;
   message m4_2 m42;
   message breakdown bd;
+  message jeden one;
+  message dwa two;
+  message trzy three;
+  message check22 check2;
+  message check33 check3;
   
   timer t11;
   timer t12;
@@ -52,6 +57,8 @@ on start
 
 on message start
 {
+  if(getValue(hard_light)==1)
+  {
   putValue(skip_1, 0);
   putValue(skip_2, 0);
   putValue(skip_3, 0);
@@ -131,7 +138,10 @@ on message start
   else 
     output(bd);
   putValue(hard_pass,0);
-  putValue(hard_light,0);
+  }
+  else
+    output(bd);
+ 
 }
 
 void clear()
@@ -171,7 +181,7 @@ int check_bits()
 
 on message breakdown
 {
-  setTimer(bd1,2);
+  setTimer(bd1,1);
 }
 
 on timer bd1
@@ -181,38 +191,56 @@ on timer bd1
   putValue(red_2,0);
   putValue(red_3,0);
   putValue(red_4,0);
-  
   putValue(yellow_1,1);
   putValue(yellow_2,1);
   putValue(yellow_3,1);
   putValue(yellow_4,1);
-  setTimer(bd2,2);
+  setTimer(bd2,1);
 }
 
 on timer bd2
 {
   clear();
-  
   putValue(red_1,0);
   putValue(red_2,0);
   putValue(red_3,0);
   putValue(red_4,0);
-  
   putValue(yellow_1,0);
   putValue(yellow_2,0);
   putValue(yellow_3,0);
   putValue(yellow_4,0);
-  output(bd);
+  setTimer(bd1,1);
 }
 
 
 /*niezalie¿nie od sekwencji sprawdzam hardbity*/
 on message independent_check
 {
+  if(getValue(hard_light)==1)
+  {
   //write("independent chcek");
   if(!check_bits())
     output(bd);
   putValue(hard_pass,0);
-  putValue(hard_light,0); 
+  }
+  else
+    output(bd);
+}
+
+on message check22
+{
+    putValue(main_c,0);
+}
+
+on message jeden
+{
+  if ( getValue(main_c)==1 || getValue(manual_c)==1)
+  {
+    putValue(hard_light,0);
+   
+   }
+  else{
+  putValue(pass_c,1);
+  output(check2);}
 }
 
